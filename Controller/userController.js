@@ -115,4 +115,17 @@ const getBalanceAtTime = asynchandler(async (req, res) => {
   }
 });
 
-module.exports = { uploadCSV, getBalanceAtTime };
+const getAll = asynchandler(async(req,res) => {
+    try {
+        const fetchedTrade = await Trade.find({});
+        if(!fetchedTrade) return res.status(400).json({message:"Trade is empty."});
+    
+        res.status(200).json(fetchedTrade);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:error.message});
+    }
+   
+})
+
+module.exports = { uploadCSV, getBalanceAtTime,getAll };
