@@ -2,7 +2,7 @@ const express = require('express');
 const {uploadCSV, getBalanceAtTime, getAll} = require('../Controller/userController');
 const userRouter = express.Router();
 
-userRouter.get('/',() => {console.log("working");})
+userRouter.get('/test',() => {console.log("working");})
 
 userRouter.post('/trades',uploadCSV);
 userRouter.post('/balance',getBalanceAtTime);
